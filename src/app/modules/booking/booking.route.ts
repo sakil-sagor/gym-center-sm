@@ -13,4 +13,11 @@ router.post(
   BookingController.bookingClass,
 );
 
+router.post(
+  '/cancel-class',
+  auth('trainee'),
+  validateRequest(bookingValidationSchema),
+  BookingController.cancleBookedClass,
+);
+
 export const BookingRoutes = router;

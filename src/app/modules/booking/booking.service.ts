@@ -40,8 +40,20 @@ export const bookClassinDB = async (scheduleId: string, traineeId: string) => {
     throw new Error('You already have a class booked in this time slot.');
   }
 
-  // Step 4: Add trainee to schedule
+  // Add trainee to schedule
   trainees.push(new Types.ObjectId(traineeId));
+  await schedule.save();
+
+  return schedule;
+};
+
+const cancelBookinginDB = async (scheduleId: string, traineeId: string) => {
+  const schedule = await Schedule.findById(scheduleId);
+  if (!schedule) throw new Error('Schedule not found');
+
+  // Remove trainee
+  const trainees = schedule.trainees ?? [];
+  schedule.trainees = trainees.filter((id) => id.toString() !== traineeId);
   await schedule.save();
 
   return schedule;
@@ -49,4 +61,5 @@ export const bookClassinDB = async (scheduleId: string, traineeId: string) => {
 
 export const BookingService = {
   bookClassinDB,
+  cancelBookinginDB,
 };
