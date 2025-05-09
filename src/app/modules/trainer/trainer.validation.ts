@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const createTrainerZodSchema = z.object({
+export const createTrainerValidationSchema = z.object({
   body: z.object({
     name: z.string(),
     email: z.string().email(),

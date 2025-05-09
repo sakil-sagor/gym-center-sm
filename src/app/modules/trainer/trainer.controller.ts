@@ -6,7 +6,6 @@ import { TrainerService } from './trainer.service';
 
 const createTrainer: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
-    console.log(req.body);
     const user = await TrainerService.createTrainerinDB(req.body);
 
     sendResponse(res, {

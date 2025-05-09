@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const signupValidationSchema = z.object({
+export const createUserValidationSchema = z.object({
   name: z.string({ required_error: 'Name is required' }),
   email: z.string().email({ message: 'Invalid email address' }),
   password: z

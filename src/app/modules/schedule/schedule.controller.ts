@@ -2,21 +2,21 @@ import { Request, RequestHandler, Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
-import { UserService } from './user.service';
+import { ScheduleService } from './schedule.service';
 
-const createUser: RequestHandler = catchAsync(
+const createSchedule: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
-    const user = await UserService.createUserinDB(req.body);
+    const schedule = await ScheduleService.createScheduleinDB(req.body);
 
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'User is created successfully',
-      data: user,
+      message: 'Schedule created successfully',
+      data: schedule,
     });
   },
 );
 
-export const UserController = {
-  createUser,
+export const ScheduleController = {
+  createSchedule,
 };
