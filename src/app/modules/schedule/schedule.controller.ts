@@ -5,6 +5,18 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { ScheduleService } from './schedule.service';
 
+const getAllSchedule: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const schedule = await ScheduleService.getAllScheduleinDB();
+
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Schedule fetched successfully',
+      data: schedule,
+    });
+  },
+);
 const createSchedule: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const schedule = await ScheduleService.createScheduleinDB(req.body);
@@ -46,6 +58,7 @@ const trainerSchedules = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const ScheduleController = {
+  getAllSchedule,
   createSchedule,
   getTraineeSchedules,
   trainerSchedules,

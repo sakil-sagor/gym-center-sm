@@ -2,6 +2,21 @@ import { calculateHourDifference } from '../../utils/calculateHoureDifference';
 import { TSchedule } from './schedule.interface';
 import { Schedule } from './schedule.model';
 
+const getAllScheduleinDB = async () => {
+  const result = await Schedule.find({})
+    .populate({
+      path: 'trainer',
+      select: '-password  -updatedAt -__v -role',
+    })
+    .populate({
+      path: 'trainees',
+      select: ' -role -password -__v  -updatedAt',
+    })
+    .select('-__v  -updatedAt');
+  if (!result) throw new Error('No schedule found');
+  return result;
+};
+
 const createScheduleinDB = async (scheduleData: TSchedule) => {
   // Check max 5 classes per day
   const existingCount = await Schedule.countDocuments({
@@ -67,6 +82,7 @@ const trainerSchedulesfromDB = async (trainerId: string) => {
 };
 
 export const ScheduleService = {
+  getAllScheduleinDB,
   createScheduleinDB,
   getTraineeSchedulesfromDb,
   trainerSchedulesfromDB,
