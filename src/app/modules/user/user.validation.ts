@@ -1,13 +1,13 @@
 import { z } from 'zod';
 
-export const signupSchema = z.object({
-  name: z.string(),
-  email: z.string().email(),
-  password: z.string().min(6),
-  role: z.enum(['admin', 'trainer', 'trainee']),
-});
-
-export const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(1),
+export const signupValidationSchema = z.object({
+  name: z.string({ required_error: 'Name is required' }),
+  email: z.string().email({ message: 'Invalid email address' }),
+  password: z
+    .string()
+    .min(6, { message: 'Password must be at least 6 characters' }),
+  role: z.enum(['admin', 'trainer', 'trainee'], {
+    required_error:
+      'Role is required and must be one of admin, trainer, trainee',
+  }),
 });
