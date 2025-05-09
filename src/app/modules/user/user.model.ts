@@ -25,9 +25,4 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-// Password compare method
-userSchema.methods.comparePassword = function (candidatePassword: string) {
-  return bcrypt.compare(candidatePassword, this.password);
-};
-
 export const User = model<TUser>('User', userSchema);
