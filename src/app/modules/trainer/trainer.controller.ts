@@ -16,7 +16,20 @@ const createTrainer: RequestHandler = catchAsync(
     });
   },
 );
+const getAllTrainers: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const user = await TrainerService.getAllTrainersinDB();
+
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User is created successfully',
+      data: user,
+    });
+  },
+);
 
 export const TrainerController = {
   createTrainer,
+  getAllTrainers,
 };

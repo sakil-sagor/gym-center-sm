@@ -7,7 +7,15 @@ const createUserinDB = async (payload: TUser) => {
   const user = await User.create(payload);
   return user;
 };
+const getAllTraineesinDB = async () => {
+  const user = await User.find({ role: 'trainee' }).select(
+    '-password -__v -updatedAt',
+  );
+  if (!user) throw new Error('No user found');
+  return user;
+};
 
 export const UserService = {
   createUserinDB,
+  getAllTraineesinDB,
 };

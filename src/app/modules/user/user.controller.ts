@@ -16,7 +16,20 @@ const createUser: RequestHandler = catchAsync(
     });
   },
 );
+const getAllTrainees: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const user = await UserService.getAllTraineesinDB();
+
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User is created successfully',
+      data: user,
+    });
+  },
+);
 
 export const UserController = {
   createUser,
+  getAllTrainees,
 };

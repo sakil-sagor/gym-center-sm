@@ -6,7 +6,15 @@ const createTrainerinDB = async (data: TTrainer) => {
   const result = await User.create(trainerData);
   return result;
 };
+const getAllTrainersinDB = async () => {
+  const result = await User.find({ role: 'trainer' }).select(
+    '-password -__v -updatedAt',
+  );
+  if (!result) throw new Error('No user found');
+  return result;
+};
 
 export const TrainerService = {
   createTrainerinDB,
+  getAllTrainersinDB,
 };

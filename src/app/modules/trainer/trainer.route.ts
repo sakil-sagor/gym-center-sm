@@ -13,5 +13,6 @@ router.post(
   validateRequest(createTrainerValidationSchema),
   TrainerController.createTrainer,
 );
+router.get('/', auth('admin'), TrainerController.getAllTrainers);
 
 export const TrainerRoutes = router;
