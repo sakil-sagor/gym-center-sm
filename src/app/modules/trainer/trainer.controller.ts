@@ -2,14 +2,12 @@ import { Request, RequestHandler, Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
-import { UserService } from './user.service';
-import { signupValidationSchema } from './user.validation';
+import { TrainerService } from './trainer.service';
 
-const createUser: RequestHandler = catchAsync(
+const createTrainer: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     console.log(req.body);
-    const parsed = signupValidationSchema.parse(req.body);
-    const user = await UserService.createUserinDB(parsed);
+    const user = await TrainerService.createTrainerinDB(req.body);
 
     sendResponse(res, {
       statusCode: httpStatus.OK,
@@ -20,6 +18,6 @@ const createUser: RequestHandler = catchAsync(
   },
 );
 
-export const UserController = {
-  createUser,
+export const TrainerController = {
+  createTrainer,
 };
