@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, RequestHandler, Response } from 'express';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
@@ -6,7 +7,7 @@ import { BookingService } from './booking.service';
 export const bookingClass: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { scheduleId } = req.body;
-    const traineeId = req.user?.id;
+    const traineeId = (req as any).user?.id;
     const result = await BookingService.bookClassinDB(scheduleId, traineeId);
 
     sendResponse(res, {
@@ -20,7 +21,7 @@ export const bookingClass: RequestHandler = catchAsync(
 
 const cancleBookedClass = catchAsync(async (req: Request, res: Response) => {
   const { scheduleId } = req.body;
-  const traineeId = req.user?.id;
+  const traineeId = (req as any).user?.id;
 
   const result = await BookingService.cancelBookinginDB(scheduleId, traineeId);
 

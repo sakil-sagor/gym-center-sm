@@ -37,7 +37,37 @@ const createScheduleinDB = async (scheduleData: TSchedule) => {
   const created = await Schedule.create({ ...scheduleData, trainees: [] });
   return created;
 };
+const getTraineeSchedulesfromDb = async (traineeId: string) => {
+  const mySchedules = await Schedule.find({ trainees: traineeId })
+    .populate({
+      path: 'trainer',
+      select: '-password -_id -createdAt -updatedAt -__v -role',
+    })
+    .populate({
+      path: 'trainees',
+      select: ' -_id -role -password -__v -createdAt -updatedAt',
+    })
+    .select('-__v -createdAt -updatedAt');
+
+  return mySchedules;
+};
+const trainerSchedulesfromDB = async (trainerId: string) => {
+  const mySchedules = await Schedule.find({ trainer: trainerId })
+    .populate({
+      path: 'trainer',
+      select: '-password -_id -createdAt -updatedAt -__v -role',
+    })
+    .populate({
+      path: 'trainees',
+      select: ' -_id -role -password -__v -createdAt -updatedAt',
+    })
+    .select('-__v -createdAt -updatedAt');
+
+  return mySchedules;
+};
 
 export const ScheduleService = {
   createScheduleinDB,
+  getTraineeSchedulesfromDb,
+  trainerSchedulesfromDB,
 };

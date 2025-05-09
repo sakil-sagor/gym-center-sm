@@ -12,5 +12,16 @@ router.post(
   validateRequest(createScheduleValidationSchema),
   ScheduleController.createSchedule,
 );
+router.get(
+  '/trainee-schedules',
+  auth('trainee'),
+  ScheduleController.getTraineeSchedules,
+);
+
+router.get(
+  '/trainer-schedules',
+  auth('trainer'),
+  ScheduleController.trainerSchedules,
+);
 
 export const ScheduleRoutes = router;
