@@ -127,14 +127,16 @@ authorization:  <token>
 ## ⚙️ How to Run Locally
 
 ```ts
-git clone <repository_url>
-cd gym-scheduler
+git clone https://github.com/sakil-sagor/gym-center-sm.git
+cd gym-center-sm
 npm install
 
 # Create .env file with:
+NODE_ENV= development
 PORT=5000
 DATABASE_URL=<your_mongo_connection>
 JWT_SECRET=your_jwt_secret
+JWT_EXPIRES_IN=7d
 
 npm run start:dev
 ```

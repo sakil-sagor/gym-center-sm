@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, RequestHandler, Response } from 'express';
 import httpStatus from 'http-status';
@@ -8,12 +10,12 @@ import { UserService } from './user.service';
 const createUser: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const user = await UserService.createUserinDB(req.body);
-
+    const { password, ...userWithoutPassword } = user.toObject();
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'User is created successfully',
-      data: user,
+      data: userWithoutPassword,
     });
   },
 );
@@ -46,8 +48,12 @@ const getSingleUser: RequestHandler = catchAsync(
 const updateUser: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { id } = req.params;
- const verifyLoggeId = (req as any).user?.id;
-    const result = await UserService.updateUserintoDB(id,verifyLoggeId, req.body);
+    const verifyLoggeId = (req as any).user?.id;
+    const result = await UserService.updateUserintoDB(
+      id,
+      verifyLoggeId,
+      req.body,
+    );
 
     sendResponse(res, {
       statusCode: httpStatus.OK,
