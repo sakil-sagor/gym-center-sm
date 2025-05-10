@@ -47,7 +47,7 @@ JWT-based authentication is used. Users must log in to get a token. Protected ro
 
 ## 🔗 Live Link
 
-_To be added after deployment_
+https://sm-technology-phi.vercel.app
 
 ## 🗂️ API Endpoints
 
