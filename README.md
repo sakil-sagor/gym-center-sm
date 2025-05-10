@@ -85,3 +85,26 @@ phone: string;
 address: string;
 role: 'admin' | 'trainer' | 'trainee';
 ```
+
+### Schedule Model
+
+```ts
+trainer: ObjectId (ref: User);
+date: string;
+startTime: string;
+endTime: string;
+trainees: ObjectId[] (ref: User);
+```
+
+## 📈 ER Diagram
+
+## 🧪 Testing Instructions
+
+1. Use the login API with the admin credentials:
+
+```ts
+{
+  "email": "admin@gmail.com",
+  "password": "123456"
+}
+```
