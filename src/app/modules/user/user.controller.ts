@@ -14,7 +14,7 @@ const createUser: RequestHandler = catchAsync(
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'User is created successfully',
+      message: 'Trainee is created successfully',
       data: userWithoutPassword,
     });
   },
@@ -26,7 +26,7 @@ const getAllTrainees: RequestHandler = catchAsync(
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'User is created successfully',
+      message: 'Trainee fetched successfully',
       data: user,
     });
   },

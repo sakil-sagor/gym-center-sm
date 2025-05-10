@@ -53,23 +53,23 @@ https://sm-technology-phi.vercel.app
 
 ### Auth
 
-- `POST /api/v1/auth/login` - login-
+- `POST /api/v1/auth/login` - login
 
 ### Users
 
-- `POST /api/v1/users/create-user` -create trainee-
+- `POST /api/v1/users/create-user` -create trainee
 - `GET /api/v1/users/` (Admin only) - get all trainee
 - `GET /api/v1/users/:id` (Admin, Trainer, Trainee) - get single admin/trainer/trainee
 - `PATCH /api/v1/users/:id` (Admin, Trainer, Trainee) - update profile admin/trainer/trainee
 
 ### Trainers
 
-- `POST /api/v1/trainers/create-trainer` (Admin only) - create trainer-
-- `GET /api/v1/trainers/` (Admin only) -view all trainer -
+- `POST /api/v1/trainers/create-trainer` (Admin only) - create trainer
+- `GET /api/v1/trainers/` (Admin only) -view all trainer
 
 ### Schedules
 
-- `GET /api/v1/schedules/` (Admin, Trainee) - View all schedule admin/Trainee -
+- `GET /api/v1/schedules/` (Admin, Trainee) - View all schedule admin/Trainee
 - `POST /api/v1/schedules/create-schedule` (Admin only) create schedule
 - `GET /api/v1/schedules/trainee-schedules` (Trainee only) View booked schedule
 - `GET /api/v1/schedules/trainer-schedules` (Trainer only) view assigned schedule
