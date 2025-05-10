@@ -5,7 +5,7 @@ import { ScheduleController } from './schedule.controller';
 import { createScheduleValidationSchema } from './schedule.validation';
 
 const router = express.Router();
-router.get('/', auth('admin'), ScheduleController.getAllSchedule);
+router.get('/', auth('admin', 'trainee'), ScheduleController.getAllSchedule);
 
 router.post(
   '/create-schedule',

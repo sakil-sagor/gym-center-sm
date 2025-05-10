@@ -14,8 +14,28 @@ const getAllTraineesinDB = async () => {
   if (!user) throw new Error('No user found');
   return user;
 };
+const getSingleUserinDB = async (id: string, verifyLoggeId: string) => {
+  if (id !== verifyLoggeId) throw new Error('Unauthorized access.');
+  const user = await User.findOne({ _id: id }).select('-password -__v ');
+  if (!user) throw new Error('No user found');
+  return user;
+};
+const updateUserintoDB = async (
+  id: string,
+  verifyLoggeId: string,
+  payload: Partial<TUser>,
+) => {
+  if (id !== verifyLoggeId) throw new Error('Unauthorized access.');
+  const result = await User.findByIdAndUpdate(id, payload, {
+    new: true,
+    runValidators: true,
+  }).select('-password -__v ');
+  return result;
+};
 
 export const UserService = {
   createUserinDB,
   getAllTraineesinDB,
+  getSingleUserinDB,
+  updateUserintoDB,
 };
