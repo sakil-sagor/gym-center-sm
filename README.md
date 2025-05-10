@@ -104,7 +104,79 @@ trainees: ObjectId[] (ref: User);
 
 ```ts
 {
-  "email": "admin@gmail.com",
+  "email": "admin@admin.com",
   "password": "123456"
+}
+```
+
+2. Use the received token in headers as:
+
+```ts
+authorization:  <token>
+```
+
+3. Test endpoints like creating trainers, schedules, booking classes, etc.
+
+## ⚙️ How to Run Locally
+
+```ts
+git clone <repository_url>
+cd gym-scheduler
+npm install
+
+# Create .env file with:
+PORT=5000
+DATABASE_URL=<your_mongo_connection>
+JWT_SECRET=your_jwt_secret
+
+npm run start:dev
+```
+
+Server runs at: http://localhost:5000
+
+## ✅ Success Response Example
+
+```ts
+{
+  "success": true,
+  "statusCode": 201,
+  "message": "Class booked successfully",
+  "data": {
+    // response data here
+  }
+}
+```
+
+## ❌ Error Response Examples
+
+### Validation Error
+
+```ts
+{
+  "success": false,
+  "message": "Validation error occurred.",
+  "errorDetails": {
+    "field": "email",
+    "message": "Invalid email format."
+  }
+}
+```
+
+### Unauthorized Access
+
+```ts
+{
+  "success": false,
+  "message": "Unauthorized access.",
+  "errorDetails": "You must be an admin to perform this action."
+}
+```
+
+### Class Full Error
+
+```ts
+{
+  "success": false,
+  "message": "Class schedule is full. Maximum 10 trainees allowed per schedule."
 }
 ```
