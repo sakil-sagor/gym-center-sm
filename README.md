@@ -21,18 +21,25 @@ A web-based backend system built with TypeScript, Express.js, MongoDB, and Mongo
 - Create Trainers
 - Schedule Classes (Max 5/day)
 - Assign Trainers to Classes
-- View all Trainers and Trainees
+- View all Trainers
+- View all Trainees(user)
+- View profile
+- Update profile
 
 ### Trainer:
 
 - View assigned schedules
+- View profile
+- Update profile
 
-### Trainee:
+### Trainee(user):
 
-- Create/Update Profile
-- Book class (Max 10 per class, no double-booking)
+- Create Profile
+- Book class (Max 10 trainee per class, no double-booking)
 - Cancel bookings
 - View own schedule
+- View profile
+- Update profile
 
 ## 🔐 Authentication
 
@@ -46,31 +53,31 @@ _To be added after deployment_
 
 ### Auth
 
-- `POST /api/v1/auth/login`
+- `POST /api/v1/auth/login` - login
 
 ### Users
 
-- `POST /api/v1/users/create-user`
-- `GET /api/v1/users/` (Admin only)
-- `GET /api/v1/users/:id` (Admin, Trainer, Trainee)
-- `PATCH /api/v1/users/:id` (Admin, Trainer, Trainee)
+- `POST /api/v1/users/create-user` -create trainee
+- `GET /api/v1/users/` (Admin only) - get all trainee
+- `GET /api/v1/users/:id` (Admin, Trainer, Trainee) - get single admin/trainer/trainee
+- `PATCH /api/v1/users/:id` (Admin, Trainer, Trainee) - update profile admin/trainer/trainee
 
 ### Trainers
 
-- `POST /api/v1/trainers/create-trainer` (Admin only)
-- `GET /api/v1/trainers/` (Admin only)
+- `POST /api/v1/trainers/create-trainer` (Admin only) - create trainer
+- `GET /api/v1/trainers/` (Admin only) -view all trainer
 
 ### Schedules
 
-- `GET /api/v1/schedules/` (Admin, Trainee)
-- `POST /api/v1/schedules/create-schedule` (Admin only)
-- `GET /api/v1/schedules/trainee-schedules` (Trainee only)
-- `GET /api/v1/schedules/trainer-schedules` (Trainer only)
+- `GET /api/v1/schedules/` (Admin, Trainee) - View all schedule admin/Trainee
+- `POST /api/v1/schedules/create-schedule` (Admin only) create schedule
+- `GET /api/v1/schedules/trainee-schedules` (Trainee only) View booked schedule
+- `GET /api/v1/schedules/trainer-schedules` (Trainer only) view assigned schedule
 
 ### Bookings
 
-- `POST /api/v1/bookings/book-class` (Trainee only)
-- `POST /api/v1/bookings/cancel-class` (Trainee only)
+- `POST /api/v1/bookings/book-class` (Trainee only) Booking class
+- `POST /api/v1/bookings/cancel-class` (Trainee only) Calcel class
 
 ## 🧩 Database Schema
 
