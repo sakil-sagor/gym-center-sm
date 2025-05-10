@@ -4,6 +4,10 @@
 
 A web-based backend system built with TypeScript, Express.js, MongoDB, and Mongoose to efficiently manage gym operations. This system supports Admins, Trainers, and Trainees with role-specific features, ensuring smooth class scheduling, booking, and profile management.
 
+## 📈 ER Diagram
+
+https://github.com/sakil-sagor/gym-center-sm/blob/main/ER-Diagram.png
+
 ## 🧱 Technology Stack
 
 - **Language:** TypeScript
@@ -44,10 +48,6 @@ A web-based backend system built with TypeScript, Express.js, MongoDB, and Mongo
 ## 🔐 Authentication
 
 JWT-based authentication is used. Users must log in to get a token. Protected routes require this token.
-
-## 🔗 Live Link
-
-https://sm-technology-phi.vercel.app
 
 ## 🗂️ API Endpoints
 
@@ -123,9 +123,14 @@ example:
 
 ```
 
-## 📈 ER Diagram
+## 🧪 Admin Credentials
 
-https://github.com/sakil-sagor/gym-center-sm/blob/main/ER-Diagram.png
+```ts
+{
+  "email": "admin@admin.com",
+  "password": "123456"
+}
+```
 
 ## 🧪 Testing Instructions
 
@@ -164,6 +169,10 @@ npm run start:dev
 ```
 
 Server runs at: http://localhost:5000
+
+## 🔗 Live Link
+
+https://sm-technology-phi.vercel.app
 
 ## ✅ Success Response Example
 
