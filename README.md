@@ -125,6 +125,8 @@ example:
 
 ## 📈 ER Diagram
 
+https://github.com/sakil-sagor/gym-center-sm/blob/main/ER-Diagram.png
+
 ## 🧪 Testing Instructions
 
 1. Use the login API with the admin credentials:
