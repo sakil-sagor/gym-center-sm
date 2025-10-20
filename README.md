@@ -10,7 +10,7 @@ https://github.com/sakil-sagor/gym-center-sm/blob/main/ER-Diagram.png
 
 ## 🧱 Technology Stack
 
-- **Language:** TypeScript
+- **Language:** TypeScript   
 - **Framework:** Express.js
 - **Database:** MongoDB
 - **ODM:** Mongoose
